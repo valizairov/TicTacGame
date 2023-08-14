@@ -77,15 +77,15 @@ class ViewController: UIViewController {
         }
         
         //disble buttons
-        button1.isEnabled = false
-        button2.isEnabled = false
-        button3.isEnabled = false
-        button4.isEnabled = false
-        button5.isEnabled = false
-        button6.isEnabled = false
-        button7.isEnabled = false
-        button8.isEnabled = false
-        button9.isEnabled = false
+        button1.isUserInteractionEnabled = false
+        button2.isUserInteractionEnabled = false
+        button3.isUserInteractionEnabled = false
+        button4.isUserInteractionEnabled = false
+        button5.isUserInteractionEnabled = false
+        button6.isUserInteractionEnabled = false
+        button7.isUserInteractionEnabled = false
+        button8.isUserInteractionEnabled = false
+        button9.isUserInteractionEnabled = false
         
         //animate winning line
         self.winLineImage.alpha = 0
@@ -101,15 +101,15 @@ class ViewController: UIViewController {
         winLineImage.center.x = 149.0
         winLineImage.center.y = 150.5
         
-        button1.isEnabled = true
-        button2.isEnabled = true
-        button3.isEnabled = true
-        button4.isEnabled = true
-        button5.isEnabled = true
-        button6.isEnabled = true
-        button7.isEnabled = true
-        button8.isEnabled = true
-        button9.isEnabled = true
+        button1.isUserInteractionEnabled = true
+        button2.isUserInteractionEnabled = true
+        button3.isUserInteractionEnabled = true
+        button4.isUserInteractionEnabled = true
+        button5.isUserInteractionEnabled = true
+        button6.isUserInteractionEnabled = true
+        button7.isUserInteractionEnabled = true
+        button8.isUserInteractionEnabled = true
+        button9.isUserInteractionEnabled = true
         button1.imageView?.image = nil
         button2.imageView?.image = nil
         button3.imageView?.image = nil

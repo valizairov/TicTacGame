@@ -12,7 +12,6 @@ class ViewController: UIViewController {
     @IBOutlet weak var button8: UIButton!
     @IBOutlet weak var button9: UIButton!
     @IBOutlet weak var statusLabel: UILabel!
-    
     @IBOutlet weak var winLineImage: UIImageView!
     
     @IBAction func startOverAction(_ sender: UIButton) {
@@ -22,20 +21,20 @@ class ViewController: UIViewController {
     @IBAction func playerMoved(_ button: UIButton) {
         var image: UIImage
         if button.tag < 10 {
-            logMoveToMatrix(button.tag, player: currentTurn)
-            switch currentTurn {
+            viewModel.logMoveToMatrix(button.tag, player: viewModel.currentTurn)
+            switch viewModel.currentTurn {
             case .circle:
                 image = UIImage(systemName: "circle") ?? UIImage()
-                currentTurn = .cross
+                viewModel.currentTurn = .cross
             case .cross:
                 image = UIImage(systemName: "arrow.up.left.and.down.right.and.arrow.up.right.and.down.left") ?? UIImage()
-                currentTurn = .circle
+                viewModel.currentTurn = .circle
             }
             button.setImage(image, for: .normal)
             button.tag += 10
             
-            if let winner = checkWhoWon().0 {
-                drawWinningLine(checkWhoWon().1)
+            if let winner = viewModel.checkWhoWon().0 {
+                drawWinningLine(viewModel.checkWhoWon().1)
                 if winner == .circle {
                     statusLabel.text = "Winner is Player 1"
                 } else {
@@ -49,6 +48,8 @@ class ViewController: UIViewController {
             }
         }
     }
+    
+    var viewModel = ViewModel()
     
     func drawWinningLine(_ line: Int) {
         winLineImage.isHidden = false
@@ -104,67 +105,12 @@ class ViewController: UIViewController {
         button9.tag = 8
 
         // Reset Matrix
-        boardMatrix = [[0,0,0],[0,0,0],[0,0,0]]
+        viewModel.boardMatrix = [[0,0,0],[0,0,0],[0,0,0]]
     }
     
-    func logMoveToMatrix(_ tag: Int, player: Player) {
-        guard tag < 10, tag >= 0 else { return }
-        var mark: Int
-        let x = tag / 3
-        let y = tag % 3
-        if player == .circle {
-            mark = 11
-        } else {
-            mark = 12
-        }
-        boardMatrix[x][y] = mark
-    }
     
-    func checkWhoWon() -> (Player?, Int) {
-        var sum: Int
-        
-        func haveAwinner(_ sum: Int) -> Player? {
-            if sum == 33 {
-                return .circle
-            }
-            if sum == 36 {
-                return .cross
-            }
-            return nil
-        }
-        
-        //check horizontal win
-        sum = boardMatrix[0][0] + boardMatrix[0][1] + boardMatrix[0][2]
-        if let player = haveAwinner(sum) { return (player, 1) }
-        sum = boardMatrix[1][0] + boardMatrix[1][1] + boardMatrix[1][2]
-        if let player = haveAwinner(sum) { return (player, 2) }
-        sum = boardMatrix[2][0] + boardMatrix[2][1] + boardMatrix[2][2]
-        if let player = haveAwinner(sum) { return (player, 3) }
-        
-        //check vertical win
-        sum = boardMatrix[0][0] + boardMatrix[1][0] + boardMatrix[2][0]
-        if let player = haveAwinner(sum) { return (player, 4) }
-        sum = boardMatrix[0][1] + boardMatrix[1][1] + boardMatrix[2][1]
-        if let player = haveAwinner(sum) { return (player, 5) }
-        sum = boardMatrix[0][2] + boardMatrix[1][2] + boardMatrix[2][2]
-        if let player = haveAwinner(sum) { return (player, 6) }
-        
-        //check diagonal win
-        sum = boardMatrix[0][0] + boardMatrix[1][1] + boardMatrix[2][2]
-        if let player = haveAwinner(sum) { return (player, 7) }
-        sum = boardMatrix[2][0] + boardMatrix[1][1] + boardMatrix[0][2]
-        if let player = haveAwinner(sum) { return (player, 8) }
+    
 
-        return (nil, 0)
-    }
-    
-    enum Player {
-        case circle
-        case cross
-    }
-    
-    var currentTurn: Player = .circle
-    var boardMatrix = [[0,0,0],[0,0,0],[0,0,0]]
         
     override func viewDidLoad() {
         super.viewDidLoad()

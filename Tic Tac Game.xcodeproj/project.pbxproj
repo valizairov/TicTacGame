@@ -16,7 +16,7 @@
 		7B6E25F02A74D57D00817BB8 /* Tic_Tac_GameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B6E25EF2A74D57D00817BB8 /* Tic_Tac_GameTests.swift */; };
 		7B6E25FA2A74D57D00817BB8 /* Tic_Tac_GameUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B6E25F92A74D57D00817BB8 /* Tic_Tac_GameUITests.swift */; };
 		7B6E25FC2A74D57D00817BB8 /* Tic_Tac_GameUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B6E25FB2A74D57D00817BB8 /* Tic_Tac_GameUITestsLaunchTests.swift */; };
-		7B6E260B2A762F8900817BB8 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B6E260A2A762F8900817BB8 /* Models.swift */; };
+		7B775B8A2A8AA7F40092D224 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B775B892A8AA7F40092D224 /* ViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,7 +50,7 @@
 		7B6E25F52A74D57D00817BB8 /* Tic Tac GameUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tic Tac GameUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B6E25F92A74D57D00817BB8 /* Tic_Tac_GameUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tic_Tac_GameUITests.swift; sourceTree = "<group>"; };
 		7B6E25FB2A74D57D00817BB8 /* Tic_Tac_GameUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tic_Tac_GameUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		7B6E260A2A762F8900817BB8 /* Models.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		7B775B892A8AA7F40092D224 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,8 +104,8 @@
 				7B6E25D82A74D57800817BB8 /* AppDelegate.swift */,
 				7B6E25DA2A74D57800817BB8 /* SceneDelegate.swift */,
 				7B6E25DC2A74D57800817BB8 /* ViewController.swift */,
+				7B775B892A8AA7F40092D224 /* ViewModel.swift */,
 				7B6E25DE2A74D57800817BB8 /* Main.storyboard */,
-				7B6E260A2A762F8900817BB8 /* Models.swift */,
 				7B6E25E12A74D57C00817BB8 /* Assets.xcassets */,
 				7B6E25E32A74D57C00817BB8 /* LaunchScreen.storyboard */,
 				7B6E25E62A74D57C00817BB8 /* Info.plist */,
@@ -261,10 +261,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7B775B8A2A8AA7F40092D224 /* ViewModel.swift in Sources */,
 				7B6E25DD2A74D57800817BB8 /* ViewController.swift in Sources */,
 				7B6E25D92A74D57800817BB8 /* AppDelegate.swift in Sources */,
 				7B6E25DB2A74D57800817BB8 /* SceneDelegate.swift in Sources */,
-				7B6E260B2A762F8900817BB8 /* Models.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

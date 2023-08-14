@@ -13,6 +13,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var button9: UIButton!
     @IBOutlet weak var statusLabel: UILabel!
     
+    @IBOutlet weak var winLineImage: UIImageView!
+    
     @IBAction func startOverAction(_ sender: UIButton) {
         resetBoard()
     }
@@ -32,7 +34,8 @@ class ViewController: UIViewController {
             button.setImage(image, for: .normal)
             button.tag += 10
             
-            if let winner = checkWhoWon() {
+            if let winner = checkWhoWon().0 {
+                drawWinningLine(checkWhoWon().1)
                 if winner == .circle {
                     statusLabel.text = "Winner is Player 1"
                 } else {
@@ -47,9 +50,38 @@ class ViewController: UIViewController {
         }
     }
     
+    func drawWinningLine(_ line: Int) {
+        winLineImage.isHidden = false
+        switch line {
+        case 1:
+            winLineImage.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi/4))
+            winLineImage.center.y -= 80
+        case 2:
+            winLineImage.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi/4))
+        case 3:
+            winLineImage.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi/4))
+            winLineImage.center.y += 80
+        case 4:
+            winLineImage.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi/4)*3.0)
+            winLineImage.center.x -= 80
+        case 5:
+            winLineImage.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi/4)*3.0)
+        case 6:
+            winLineImage.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi/4)*3.0)
+            winLineImage.center.x += 85
+        case 7:
+            winLineImage.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi/2))
+        default: //8th diagonal
+            winLineImage.transform = CGAffineTransform(rotationAngle: 0)
+        }
+    }
+    
     func resetBoard() {
         // Reset UI
         statusLabel.text = ""
+        winLineImage.isHidden = true
+        winLineImage.center.x = 149.0
+        winLineImage.center.y = 150.5
         button1.imageView?.image = nil
         button2.imageView?.image = nil
         button3.imageView?.image = nil
@@ -88,7 +120,7 @@ class ViewController: UIViewController {
         boardMatrix[x][y] = mark
     }
     
-    func checkWhoWon() -> Player? {
+    func checkWhoWon() -> (Player?, Int) {
         var sum: Int
         
         func haveAwinner(_ sum: Int) -> Player? {
@@ -103,27 +135,27 @@ class ViewController: UIViewController {
         
         //check horizontal win
         sum = boardMatrix[0][0] + boardMatrix[0][1] + boardMatrix[0][2]
-        if let player = haveAwinner(sum) { return player }
+        if let player = haveAwinner(sum) { return (player, 1) }
         sum = boardMatrix[1][0] + boardMatrix[1][1] + boardMatrix[1][2]
-        if let player = haveAwinner(sum) { return player }
+        if let player = haveAwinner(sum) { return (player, 2) }
         sum = boardMatrix[2][0] + boardMatrix[2][1] + boardMatrix[2][2]
-        if let player = haveAwinner(sum) { return player }
+        if let player = haveAwinner(sum) { return (player, 3) }
         
         //check vertical win
         sum = boardMatrix[0][0] + boardMatrix[1][0] + boardMatrix[2][0]
-        if let player = haveAwinner(sum) { return player }
+        if let player = haveAwinner(sum) { return (player, 4) }
         sum = boardMatrix[0][1] + boardMatrix[1][1] + boardMatrix[2][1]
-        if let player = haveAwinner(sum) { return player }
+        if let player = haveAwinner(sum) { return (player, 5) }
         sum = boardMatrix[0][2] + boardMatrix[1][2] + boardMatrix[2][2]
-        if let player = haveAwinner(sum) { return player }
+        if let player = haveAwinner(sum) { return (player, 6) }
         
         //check diagonal win
         sum = boardMatrix[0][0] + boardMatrix[1][1] + boardMatrix[2][2]
-        if let player = haveAwinner(sum) { return player }
+        if let player = haveAwinner(sum) { return (player, 7) }
         sum = boardMatrix[2][0] + boardMatrix[1][1] + boardMatrix[0][2]
-        if let player = haveAwinner(sum) { return player }
+        if let player = haveAwinner(sum) { return (player, 8) }
 
-        return nil
+        return (nil, 0)
     }
     
     enum Player {

@@ -56,6 +56,15 @@
                                                     <action selector="playerMoved:" destination="BYZ-38-t0r" eventType="touchUpInside" id="urH-Qz-usx"/>
                                                 </connections>
                                             </button>
+                                            <button opaque="NO" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wNX-D8-4aM" userLabel="4">
+                                                <rect key="frame" x="210" y="120" width="60" height="60"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title=""/>
+                                                <connections>
+                                                    <action selector="playerMoved:" destination="BYZ-38-t0r" eventType="touchUpInside" id="M8V-U5-zQH"/>
+                                                </connections>
+                                            </button>
                                             <button opaque="NO" tag="4" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WnP-it-lGS" userLabel="5">
                                                 <rect key="frame" x="119" y="120" width="60" height="60"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -101,15 +110,11 @@
                                                     <action selector="playerMoved:" destination="BYZ-38-t0r" eventType="touchUpInside" id="G4Z-Ax-QY4"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wNX-D8-4aM" userLabel="4">
-                                                <rect key="frame" x="210" y="120" width="60" height="60"/>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="line.diagonal" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="DGX-9y-zeb">
+                                                <rect key="frame" x="29" y="40" width="240" height="221"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" title=""/>
-                                                <connections>
-                                                    <action selector="playerMoved:" destination="BYZ-38-t0r" eventType="touchUpInside" id="M8V-U5-zQH"/>
-                                                </connections>
-                                            </button>
+                                                <color key="tintColor" systemColor="systemGreenColor"/>
+                                            </imageView>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
@@ -174,6 +179,7 @@
                         <outlet property="button8" destination="0mH-IC-9RZ" id="zsb-ZM-ZtV"/>
                         <outlet property="button9" destination="XBc-EQ-vch" id="BJh-Nu-pIR"/>
                         <outlet property="statusLabel" destination="0Bh-1g-nc6" id="0t5-o2-5E1"/>
+                        <outlet property="winLineImage" destination="DGX-9y-zeb" id="0nN-Z9-ZYR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -183,6 +189,7 @@
     </scenes>
     <resources>
         <image name="grid" catalog="system" width="128" height="112"/>
+        <image name="line.diagonal" catalog="system" width="128" height="113"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

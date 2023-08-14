@@ -75,6 +75,19 @@ class ViewController: UIViewController {
         default: //8th diagonal
             winLineImage.transform = CGAffineTransform(rotationAngle: 0)
         }
+        
+        //disble buttons
+        button1.isEnabled = false
+        button2.isEnabled = false
+        button3.isEnabled = false
+        button4.isEnabled = false
+        button5.isEnabled = false
+        button6.isEnabled = false
+        button7.isEnabled = false
+        button8.isEnabled = false
+        button9.isEnabled = false
+        
+        //animate winning line
         self.winLineImage.alpha = 0
         UIView.animate(withDuration: 0.5) {
             self.winLineImage.alpha = 1
@@ -87,6 +100,16 @@ class ViewController: UIViewController {
         winLineImage.isHidden = true
         winLineImage.center.x = 149.0
         winLineImage.center.y = 150.5
+        
+        button1.isEnabled = true
+        button2.isEnabled = true
+        button3.isEnabled = true
+        button4.isEnabled = true
+        button5.isEnabled = true
+        button6.isEnabled = true
+        button7.isEnabled = true
+        button8.isEnabled = true
+        button9.isEnabled = true
         button1.imageView?.image = nil
         button2.imageView?.image = nil
         button3.imageView?.image = nil
@@ -96,7 +119,7 @@ class ViewController: UIViewController {
         button7.imageView?.image = nil
         button8.imageView?.image = nil
         button9.imageView?.image = nil
-        
+
         //Tags
         button1.tag = 0
         button2.tag = 1
@@ -111,10 +134,6 @@ class ViewController: UIViewController {
         // Reset Matrix
         viewModel.boardMatrix = [[0,0,0],[0,0,0],[0,0,0]]
     }
-    
-    
-    
-
         
     override func viewDidLoad() {
         super.viewDidLoad()

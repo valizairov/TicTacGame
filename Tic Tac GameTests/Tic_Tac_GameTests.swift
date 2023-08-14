@@ -10,27 +10,46 @@ import XCTest
 
 class Tic_Tac_GameTests: XCTestCase {
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    var viewModel = ViewModel()
+    
+    func testLogMoveToMatrix() throws {
+        //log correct moves
+        viewModel.logMoveToMatrix(0, player: .circle)
+        XCTAssertEqual(viewModel.boardMatrix, [[11, 0, 0], [0, 0, 0], [0, 0, 0]])
+        viewModel.logMoveToMatrix(5, player: .cross)
+        XCTAssertEqual(viewModel.boardMatrix, [[11, 0, 0], [0, 0, 12], [0, 0, 0]])
+        viewModel.logMoveToMatrix(6, player: .circle)
+        XCTAssertEqual(viewModel.boardMatrix, [[11, 0, 0], [0, 0, 12], [11, 0, 0]])
+        print(viewModel.boardMatrix)
+
+        //log incorrect moves
+        viewModel.boardMatrix = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
+        viewModel.logMoveToMatrix(-1, player: .cross)
+        viewModel.logMoveToMatrix(9, player: .cross)
+        XCTAssertEqual(viewModel.boardMatrix, [[0, 0, 0], [0, 0, 0], [0, 0, 0]])
     }
 
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
+    func testCheckWhoWon() throws {
+        //Nobody won
+        viewModel.boardMatrix = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
+        XCTAssertEqual(viewModel.checkWhoWon().0, nil)
 
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
-    }
+        viewModel.boardMatrix = [[11, 0, 0], [11, 0, 0], [12, 0, 0]]
+        XCTAssertEqual(viewModel.checkWhoWon().0, nil)
+        
+        //Someone won
+        viewModel.boardMatrix = [[11, 0, 0], [11, 0, 0], [11, 0, 0]]
+        XCTAssertEqual(viewModel.checkWhoWon().0, .circle)
+        XCTAssertEqual(viewModel.checkWhoWon().1, 4)
 
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+        viewModel.boardMatrix = [[0, 12, 0], [0, 12, 0], [0, 12, 0]]
+        XCTAssertEqual(viewModel.checkWhoWon().0, .cross)
+        XCTAssertEqual(viewModel.checkWhoWon().1, 5)
+
+        viewModel.boardMatrix = [[11, 0, 0], [0, 11, 0], [0, 0, 11]]
+        XCTAssertEqual(viewModel.checkWhoWon().0, .circle)
+        XCTAssertEqual(viewModel.checkWhoWon().1, 7)
+
     }
 
 }

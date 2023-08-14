@@ -4,7 +4,7 @@ class ViewModel {
     var boardMatrix = [[0,0,0],[0,0,0],[0,0,0]]
 
     func logMoveToMatrix(_ tag: Int, player: Player) {
-        guard tag < 10, tag >= 0 else { return }
+        guard tag < 9, tag >= 0 else { return }
         var mark: Int
         let x = tag / 3
         let y = tag % 3

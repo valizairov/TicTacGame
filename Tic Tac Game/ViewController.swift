@@ -75,6 +75,10 @@ class ViewController: UIViewController {
         default: //8th diagonal
             winLineImage.transform = CGAffineTransform(rotationAngle: 0)
         }
+        self.winLineImage.alpha = 0
+        UIView.animate(withDuration: 0.5) {
+            self.winLineImage.alpha = 1
+        }
     }
     
     func resetBoard() {
